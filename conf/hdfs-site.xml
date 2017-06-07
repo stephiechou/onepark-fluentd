@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<?xml version=“1.0” encoding=“UTF-8" standalone=“no”?>
+<?xml-stylesheet type=“text/xsl” href=“configuration.xsl”?>
 <configuration>
     <property>
         <name>dfs.nameservice.id</name>
@@ -13,11 +13,14 @@
         <name>dfs.ha.namenodes.hdfs</name>
         <value>name-0-node,name-1-node</value>
     </property>
-
+    <property>
+        <name>dfs.cluster.administrators</name>
+        <value>core,centos,azureuser</value>
+    </property>
     <!-- namenode -->
     <property>
         <name>dfs.namenode.shared.edits.dir</name>
-        <value>qjournal://journal-0-node.hdfs.mesos:8485;journal-1-node.hdfs.mesos:8485;journal-2-node.hdfs.mesos:8485/hdfs</value>
+        <value>qjournal://journal-0-node..mesos:8485;journal-1-node..mesos:8485;journal-2-node..mesos:8485/hdfs</value>
     </property>
     <property>
         <name>dfs.namenode.name.dir</name>
@@ -52,7 +55,7 @@
     <!-- name-0-node -->
     <property>
         <name>dfs.namenode.rpc-address.hdfs.name-0-node</name>
-        <value>name-0-node.hdfs.mesos:9001</value>
+        <value>name-0-node..mesos:9001</value>
     </property>
     <property>
         <name>dfs.namenode.rpc-bind-host.hdfs.name-0-node</name>
@@ -60,7 +63,7 @@
     </property>
     <property>
         <name>dfs.namenode.http-address.hdfs.name-0-node</name>
-        <value>name-0-node.hdfs.mesos:9002</value>
+        <value>name-0-node..mesos:9002</value>
     </property>
     <property>
         <name>dfs.namenode.http-bind-host.hdfs.name-0-node</name>
@@ -71,7 +74,7 @@
     <!-- name-1-node -->
     <property>
         <name>dfs.namenode.rpc-address.hdfs.name-1-node</name>
-        <value>name-1-node.hdfs.mesos:9001</value>
+        <value>name-1-node..mesos:9001</value>
     </property>
     <property>
         <name>dfs.namenode.rpc-bind-host.hdfs.name-1-node</name>
@@ -79,11 +82,16 @@
     </property>
     <property>
         <name>dfs.namenode.http-address.hdfs.name-1-node</name>
-        <value>name-1-node.hdfs.mesos:9002</value>
+        <value>name-1-node..mesos:9002</value>
     </property>
     <property>
         <name>dfs.namenode.http-bind-host.hdfs.name-1-node</name>
         <value>0.0.0.0</value>
+    </property>
+
+    <property>
+        <name>dfs.ha.zkfc.port</name>
+        <value>8019</value>
     </property>
 
     <!-- journalnode -->
