@@ -14,10 +14,10 @@ RUN apk add --update --virtual .build-deps \
 
 EXPOSE 24284
 
-# Set up Fluent configuration file
-CMD fluentd --setup /etc/fluent
-CMD vi conf/fluent.conf
+RUN mkdir /conf
+WORKDIR /conf
+
+COPY conf/fluent.conf fluent.conf
 
 # Start an instance of Fluentd
-CMD fluentd -s conf
-CMD fluentd -c conf/fluent.conf
+CMD fluentd -c fluent.conf
