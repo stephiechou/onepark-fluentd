@@ -13,6 +13,7 @@ RUN apk add --update --virtual .build-deps \
 
 EXPOSE 24284
 
+RUN mkdir -p var/log/fluent/s3
 RUN mkdir /conf
 WORKDIR /conf
 
