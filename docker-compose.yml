@@ -1,0 +1,26 @@
+version: '2'
+
+services:
+  fluent:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    privileged: true
+    ports:
+      - '24224:24224'
+    volumes:
+      - "./conf/fluent.conf:/conf/fluent.conf"
+    environment:
+      - AWS_KEY_ID=${AWS_KEY_ID}
+      - ASW_SECRET_KEY=${ASW_SECRET_KEY}
+      - BUCKET_NAME=${BUCKET_NAME}
+
+  robot:
+    image: chentex/random-logger
+    logging:
+      driver: "fluentd"
+      options:
+        fluentd-address: localhost:24224
+        tag: robot
+    depends_on:
+      - fluent
