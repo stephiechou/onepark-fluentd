@@ -1,0 +1,4 @@
+# Files and folders ignored for Dockerimage building process
+
+.env
+docker
